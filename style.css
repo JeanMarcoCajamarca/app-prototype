@@ -1,0 +1,251 @@
+:root {
+    --bg-color: DarkOliveGreen;
+    --taskbar-color: rgba(0, 0, 0, 0.4);
+    --window-bg: #f4e4bc;
+    --font-gothic: 'MedievalSharp', cursive;
+}
+
+/* Login Screen Styles --> March 19, 2026 */
+#login-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #2c3e50; /* Darker, neutral background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.login-box {
+   width: 350px;
+    padding: 30px;
+    text-align: center;
+    background: #f4e4bc; /* Your orcOS Parchment color */
+    border: 3px solid #5d4037; /* Brown border to match windows */
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: var(--font-gothic);
+}
+
+.login-box input {
+    padding: 10px;
+    border: 1px solid #5d4037;
+    background: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-gothic);
+}
+
+.auth-buttons { display: flex; justify-content: space-around; }
+
+body, html {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+    font-family: var(--font-gothic);
+}
+
+#desktop {
+    width: 100vw; height: 100vh;
+    background-color: var(--bg-color);
+    background-size: cover;
+    position: relative;
+}
+
+/* Browser Search Bar Styling */
+#browser-search-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+    background: #f4e4bc;
+    padding: 10px;
+    border: 2px solid #5d4037;
+    border-radius: 5px;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    z-index: 100;
+    cursor: move;
+}
+
+#browser-url {
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #5d4037;
+    background: transparent;
+    font-family: var(--font-gothic);
+}
+
+#browser-choice {
+    font-family: var(--font-gothic);
+    background: #e2c285;
+    border: 1px solid #5d4037;
+}
+
+#dashboard {
+    position: absolute; top: 20px; right: 20px;
+    color: white; text-align: right;
+    transition: all 0.3s ease;
+}
+
+#mascot {
+    position: absolute;
+    bottom: 110px;
+    right: 25px;
+    width: 180px;
+    height: 150px;
+    z-index: 5;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+    animation: breathing 3s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+
+@keyframes breathing {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+#welcome-msg {
+    position: absolute;
+    bottom: 75px; 
+    right: 20px;
+    font-size: 2.2rem;
+    color: #f4e4bc;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+#clock { font-size: 4rem; font-weight: bold; }
+#weather { font-style: italic; font-size: 1.2rem; }
+#date-display { font-size: 1.5rem; margin-top: 5px; }
+
+#taskbar {
+    position: absolute; bottom: 0; width: 100%; height: 60px;
+    background: var(--taskbar-color);
+    display: flex; justify-content: center; align-items: flex-end; /* Sits characters on the line */
+    padding-bottom: 5px;
+}
+
+.scroll-btn {
+    background: #e2c285; border: 2px solid #5d4037;
+    padding: 5px 15px; cursor: pointer;
+    margin: 0 10px 5px 10px; /* Align with characters */
+    box-shadow: -5px 0 0 #bc9a5c, 5px 0 0 #bc9a5c;
+    font-family: var(--font-gothic);
+}
+
+/* Styling for the new characters */
+.taskbar-character {
+    width: 115px;
+    height: auto;
+    cursor: pointer;
+    vertical-align: bottom;
+    margin-bottom: 5px;
+    transition: transform 0.2s;
+}
+
+#justin-dragon {
+    margin-left: 20px; 
+    margin-right: 40px; /* Distance from Jemma on the right */
+}
+
+.taskbar-character:hover {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+}
+
+.window {
+    position: absolute; top: 50px; left: 50px;
+    width: 500px; background: var(--window-bg);
+    border: 3px solid #5d4037; display: flex; flex-direction: column;
+}
+
+.window-header { padding: 8px; background: #5d4037; color: white; display: flex; justify-content: space-between; }
+.window-content { padding: 15px; }
+.hidden { display: none !important; }
+
+#journal-editor {
+    width: 100%; height: 250px;
+    background: transparent; border: 1px solid #5d4037;
+    margin-top: 10px; resize: none;
+}
+
+/* Keep as of Marcg 11th, 2026
+:root {
+    --bg-color: #2c3e50;
+    --taskbar-color: rgba(255, 255, 255, 0.1);
+    --window-bg: rgba(255, 255, 255, 0.95);
+    --accent-color: #3498db;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--font-main);
+}
+
+#desktop {
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-color) no-repeat center center;
+    background-size: cover;
+    transition: background 0.5s ease;
+}
+
+#dashboard {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    text-align: right;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+#clock { font-size: 3rem; font-weight: bold; }
+
+#taskbar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background: var(--taskbar-color);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.window {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 600px;
+    height: 400px;
+    background: var(--window-bg);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.window-header {
+    padding: 10px;
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+    cursor: move;
+}
+
+.window-content { padding: 15px; flex-grow: 1; }
+
+#doc-editor {
+    width: 100%;
+    height: 80%;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+.hidden { display: none; } */

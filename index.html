@@ -1,0 +1,117 @@
+<!-- coded by Jean Marco Cajamarca, Feb to March 16th, 2026. 
+Shout puts to Gemini!!!
+orcOS, 
+Mascot is Jemma the orc -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>orcOS Prototype</title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div id="login-screen">
+        <div class="login-box window-shell">
+            <h2>Identify Yourself, Stranger</h2>
+            <input type="email" id="auth-email" placeholder="Email (Scroll Address)">
+            <input type="password" id="auth-password" placeholder="Password (Max 10 chars)" maxlength="10">
+            <div class="auth-buttons">
+                <button class="scroll-btn" onclick="handleAuth('login')">Login/Enter the Horde</button>
+                <button class="scroll-btn" onclick="handleAuth('signup')">Sign-up/Join the Horde</button>
+            </div>
+            <p id="auth-error" style="color: red; font-size: 0.8rem;"></p>
+        </div>
+    </div>
+
+    <div id="desktop" class="hidden">
+        <div id="browser-search-container" onmousedown="dragElement(this)">
+            <input type="text" id="browser-url" placeholder="Enter a realm..." onkeydown="if(event.key === 'Enter') launchSite()">
+            <select id="browser-choice">
+                <option value="default">Default Tab</option>
+                <option value="chrome">Chrome</option>
+                <option value="safari">Safari</option>
+                <option value="edge">Edge</option>
+                <option value="firefox">Firefox</option>
+            </select>
+            <button class="scroll-btn" onclick="launchSite()">Explore</button>
+        </div>
+        
+        <img src="assets/orcOSmascot.PNG" id="mascot">
+        <div id="welcome-msg">Welcome to orcOS</div>
+
+        <div id="dashboard">
+            <div id="clock">00:00:00</div>
+            <div id="weather">Loading weather...</div>
+            <div id="date-display"></div>
+        </div>
+
+        <div id="app-journal" class="window hidden">
+            <div class="window-header">
+                <span>Journal</span>
+                <button onclick="confirmClose('app-journal')">X</button>
+            </div>
+            <div class="window-content">
+                <div class="editor-tools">
+                    <select id="journal-font-size" onchange="updateJournalStyle()">
+                        <option value="14px">Small</option>
+                        <option value="18px" selected>Medium</option>
+                        <option value="24px">Large</option>
+                    </select>
+                    <select id="journal-font-family" onchange="updateJournalStyle()">
+                        <option value="'MedievalSharp', cursive">Gothic</option>
+                        <option value="serif">Serif</option>
+                        <option value="sans-serif">Modern</option>
+                    </select>
+                    <span id="word-count">0 / 1000 words</span>
+                </div>
+                <textarea id="journal-editor" placeholder="Enter text here..." oninput="checkWordCount()"></textarea>
+                <button class="save-btn" onclick="saveJournal()">Save Entry</button>
+            </div>
+        </div>
+
+        <div id="app-settings" class="window hidden">
+            <div class="window-header">
+                <span>System Settings</span>
+                <button onclick="closeApp('app-settings')">X</button>
+            </div>
+            <div class="window-content settings-grid">
+                <section>
+                    <h4>Visuals</h4>
+                    <label>Background:</label>
+                    <input type="color" onchange="updateSetting('bg', this.value)">
+                    <label>Taskbar:</label>
+                    <input type="color" onchange="updateSetting('taskbar', this.value)">
+                    <label>Upload Background:</label>
+                    <input type="file" accept="image/*" onchange="uploadBackground(event)">
+                </section>
+                
+                <section>
+                    <h4>Layout & Text</h4>
+                    <label>Dashboard Alignment:</label>
+                    <select onchange="updateSetting('align', this.value)">
+                        <option value="right">Right</option>
+                        <option value="left">Left</option>
+                        <option value="center">Center</option>
+                    </select>
+                    <button class="scroll-btn" onclick="handleSignOut()" style="margin-top:10px; width:100%;">Sign Out</button>
+                </section>
+            </div>
+        </div>
+
+        <div id="taskbar">
+            <div class="app-icons">
+                <img src="assets/lara_barnes.png" id="lara-barnes" class="taskbar-character" alt="Lara Barnes">
+                <button class="scroll-btn" onclick="openApp('app-journal')">Journal</button>
+                <button class="scroll-btn" onclick="openApp('app-settings')">Settings</button>
+                <img src="assets/justin_dragon.png" id="justin-dragon" class="taskbar-character" alt="Justin Dragon">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
