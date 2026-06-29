@@ -1,11 +1,3 @@
-/* ============================================================
-   EDUPATH — styles.css
-   East Harlem Student Learning Platform
-   Design System: Deep Indigo Night + Sunrise Gold + Coral Rise
-   Typefaces: Nunito (display/UI) + Inter (data/labels)
-   ============================================================ */
-
-/* ─── TOKENS ─────────────────────────────────────────────── */
 :root {
   /* Palette */
   --night:        #0f0c2e;   /* deepest bg — nighttime study */
