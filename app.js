@@ -1,11 +1,3 @@
-/**
- * EDUPATH — app.js
- * East Harlem Student Learning Platform
- * Handles: navigation, grade tracking, learning activities,
- *          quiz engine, scheduling modal, progress persistence,
- *          toast notifications, confetti rewards
- */
-
 'use strict';
 
 /* ============================================================
