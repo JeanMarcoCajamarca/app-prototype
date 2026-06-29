@@ -1,5 +1,5 @@
 /**
- * EDUPATH — app.js
+ * EDUQuest — app.js
  * East Harlem Student Learning Platform
  * Handles: navigation, grade tracking, learning activities,
  *          quiz engine, scheduling modal, progress persistence,
